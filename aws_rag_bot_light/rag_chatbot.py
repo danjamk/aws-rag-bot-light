@@ -7,8 +7,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.messages import AIMessage, HumanMessage
-from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_openai import ChatOpenAI
+# from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema.runnable import RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
 
@@ -26,9 +26,9 @@ class LlmModelTypes:
     BEDROCK_TITAN_EXPRESS = "bedrock_titan_express"
     BEDROCK_CLAUDE_INSTANT = "bedrock_claude_instant"
     BEDROCK_CLAUDE_21 = "bedrock_claude21"
-    OPENAI_GPT4 = "openai_gpt4"
-    OPENAI_GPT35 = "openai_gpt35"
-    GOOGLE_GEMINI_PRO = "google_gemini_pro"
+    # OPENAI_GPT4 = "openai_gpt4"
+    # OPENAI_GPT35 = "openai_gpt35"
+    # GOOGLE_GEMINI_PRO = "google_gemini_pro"
 
 
 def structure_message_history(chat_history):
@@ -148,50 +148,50 @@ class RagChatbot:
         }
     }
 
-    __open_ai_model_def_gpt4 = {
-        "key": "openai_gpt4",
-        "name": "OpenAI GPT-4",
-        "id": "gpt-4",
-        "client_name": "openai",
-        "kwargs": {
-            "maxTokens": 500,
-            "temperature": 0.5,
-        },
-        "model_cost": {
-            "input_token_cost": 0.03 / 1000,
-            "output_token_cost": 0.06 / 1000
-        }
-    }
-
-    __open_ai_model_def_gpt35 = {
-        "key": "openai_gpt35",
-        "name": "OpenAI GPT-3.5 Turbo",
-        "id": "gpt-3.5-turbo",
-        "client_name": "openai",
-        "kwargs": {
-            "maxTokens": 500,
-            "temperature": 0.5,
-        },
-        "model_cost": {
-            "input_token_cost": 0.0005 / 1000,
-            "output_token_cost": 0.0015 / 1000
-        }
-    }
-
-    __google_gemini_pro = {
-        "key": "google_gemini_pro",
-        "name": "Google Gemini Pro",
-        "id": "gemini-pro",
-        "client_name": "google",
-        "kwargs": {
-            "maxTokens": 500,
-            "temperature": 0.5,
-        },
-        "model_cost": {  # uses cost/char... estimated at 4 chars per token
-            "input_token_cost": 0.000125 * 4 / 1000,
-            "output_token_cost": 0.000375 * 4 / 1000
-        }
-    }
+    # __open_ai_model_def_gpt4 = {
+    #     "key": "openai_gpt4",
+    #     "name": "OpenAI GPT-4",
+    #     "id": "gpt-4",
+    #     "client_name": "openai",
+    #     "kwargs": {
+    #         "maxTokens": 500,
+    #         "temperature": 0.5,
+    #     },
+    #     "model_cost": {
+    #         "input_token_cost": 0.03 / 1000,
+    #         "output_token_cost": 0.06 / 1000
+    #     }
+    # }
+    #
+    # __open_ai_model_def_gpt35 = {
+    #     "key": "openai_gpt35",
+    #     "name": "OpenAI GPT-3.5 Turbo",
+    #     "id": "gpt-3.5-turbo",
+    #     "client_name": "openai",
+    #     "kwargs": {
+    #         "maxTokens": 500,
+    #         "temperature": 0.5,
+    #     },
+    #     "model_cost": {
+    #         "input_token_cost": 0.0005 / 1000,
+    #         "output_token_cost": 0.0015 / 1000
+    #     }
+    # }
+    #
+    # __google_gemini_pro = {
+    #     "key": "google_gemini_pro",
+    #     "name": "Google Gemini Pro",
+    #     "id": "gemini-pro",
+    #     "client_name": "google",
+    #     "kwargs": {
+    #         "maxTokens": 500,
+    #         "temperature": 0.5,
+    #     },
+    #     "model_cost": {  # uses cost/char... estimated at 4 chars per token
+    #         "input_token_cost": 0.000125 * 4 / 1000,
+    #         "output_token_cost": 0.000375 * 4 / 1000
+    #     }
+    # }
 
     __model_options = [
         __bedrock_model_def_llama2,
@@ -199,9 +199,9 @@ class RagChatbot:
         __bedrock_model_def_titan_express,
         __bedrock_model_def_claude_instant,
         __bedrock_model_def_claude21,
-        __open_ai_model_def_gpt4,
-        __open_ai_model_def_gpt35,
-        __google_gemini_pro
+        # __open_ai_model_def_gpt4,
+        # __open_ai_model_def_gpt35,
+        # __google_gemini_pro
     ]
     __current_model = None
     __prompt_model = None

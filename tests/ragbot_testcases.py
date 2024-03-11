@@ -78,26 +78,26 @@ class TestRagbot(unittest.TestCase):
         print(meaning_of_life)
         self.assertIn("42", meaning_of_life)
 
-    def test_openai_gpt4(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4)
-        llm = chatbot.get_llm_model()
-        meaning_of_life = llm.invoke(question)
-        print(meaning_of_life.content)
-        self.assertIn("42", meaning_of_life.content)
-
-    def test_openai_gpt3(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35)
-        llm = chatbot.get_llm_model()
-        meaning_of_life = llm.invoke(question)
-        print(meaning_of_life.content)
-        self.assertIn("42", meaning_of_life.content)
-
-    def test_google_gemini_pro(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO)
-        llm = chatbot.get_llm_model()
-        meaning_of_life = llm.invoke(question)
-        print(meaning_of_life.content)
-        self.assertIn("42", meaning_of_life.content)
+    # def test_openai_gpt4(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4)
+    #     llm = chatbot.get_llm_model()
+    #     meaning_of_life = llm.invoke(question)
+    #     print(meaning_of_life.content)
+    #     self.assertIn("42", meaning_of_life.content)
+    #
+    # def test_openai_gpt3(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35)
+    #     llm = chatbot.get_llm_model()
+    #     meaning_of_life = llm.invoke(question)
+    #     print(meaning_of_life.content)
+    #     self.assertIn("42", meaning_of_life.content)
+    #
+    # def test_google_gemini_pro(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO)
+    #     llm = chatbot.get_llm_model()
+    #     meaning_of_life = llm.invoke(question)
+    #     print(meaning_of_life.content)
+    #     self.assertIn("42", meaning_of_life.content)
 
     # Test chatob with basic questions
     def test_chatbot_with_titan(self):
@@ -141,29 +141,29 @@ class TestRagbot(unittest.TestCase):
         print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
         self.assertIsNotNone(response)
 
-    def test_chatbot_with_openai_gpt4(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
-        print()
-        response = chatbot.ask_question(context_question, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
-        self.assertIsNotNone(response)
-
-    def test_chatbot_with_openai_gpt3(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
-        print()
-        response = chatbot.ask_question(context_question, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
-        self.assertIsNotNone(response)
-
-    def test_chatbot_with_google_gemini_pro(self):
-        chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
-        print()
-        response = chatbot.ask_question(context_question, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
-        self.assertIsNotNone(response)
+    # def test_chatbot_with_openai_gpt4(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
+    #     print()
+    #     response = chatbot.ask_question(context_question, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
+    #     self.assertIsNotNone(response)
+    #
+    # def test_chatbot_with_openai_gpt3(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
+    #     print()
+    #     response = chatbot.ask_question(context_question, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
+    #     self.assertIsNotNone(response)
+    #
+    # def test_chatbot_with_google_gemini_pro(self):
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {context_question}" + Style.RESET_ALL)
+    #     print()
+    #     response = chatbot.ask_question(context_question, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response + Style.RESET_ALL)
+    #     self.assertIsNotNone(response)
 
     def test_chatbot_conversation_with_titan(self):
         # NOTE: This test does not work on Titan, but does on all others. Still investigating.
@@ -252,53 +252,53 @@ class TestRagbot(unittest.TestCase):
         print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
         self.assertIsNotNone(response2)
 
-    def test_chatbot_conversation_with_openai_gpt4(self):
-        chat_history = []
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
-        print()
-        response1 = chatbot.ask_question(conv_question1, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
-        self.assertIsNotNone(response1)
-
-        print("----------------------------------------------------------------------")
-        chat_history.extend([{"question": conv_question1, "response": response1}])
-        print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
-        print()
-        response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
-        self.assertIsNotNone(response2)
-
-    def test_chatbot_conversation_with_openai_gpt3(self):
-        chat_history = []
-        chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
-        print()
-        response1 = chatbot.ask_question(conv_question1, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
-        self.assertIsNotNone(response1)
-
-        print("----------------------------------------------------------------------")
-        chat_history.extend([{"question": conv_question1, "response": response1}])
-        print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
-        print()
-        response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
-        self.assertIsNotNone(response2)
-
-    def test_chatbot_conversation_with_google_gemini_pro(self):
-        chat_history = []
-        chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO, prompt_model=NasaSpokespersonPrompts)
-        print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
-        print()
-        response1 = chatbot.ask_question(conv_question1, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
-        self.assertIsNotNone(response1)
-
-        print("----------------------------------------------------------------------")
-        chat_history.extend([{"question": conv_question1, "response": response1}])
-        print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
-        print()
-        response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
-        print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
-        self.assertIsNotNone(response2)
+    # def test_chatbot_conversation_with_openai_gpt4(self):
+    #     chat_history = []
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT4, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
+    #     print()
+    #     response1 = chatbot.ask_question(conv_question1, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response1)
+    #
+    #     print("----------------------------------------------------------------------")
+    #     chat_history.extend([{"question": conv_question1, "response": response1}])
+    #     print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
+    #     print()
+    #     response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response2)
+    #
+    # def test_chatbot_conversation_with_openai_gpt3(self):
+    #     chat_history = []
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.OPENAI_GPT35, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
+    #     print()
+    #     response1 = chatbot.ask_question(conv_question1, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response1)
+    #
+    #     print("----------------------------------------------------------------------")
+    #     chat_history.extend([{"question": conv_question1, "response": response1}])
+    #     print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
+    #     print()
+    #     response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response2)
+    #
+    # def test_chatbot_conversation_with_google_gemini_pro(self):
+    #     chat_history = []
+    #     chatbot = RagChatbot(domain_name, LlmModelTypes.GOOGLE_GEMINI_PRO, prompt_model=NasaSpokespersonPrompts)
+    #     print(Fore.BLUE + f"Question: {conv_question1}" + Style.RESET_ALL)
+    #     print()
+    #     response1 = chatbot.ask_question(conv_question1, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response1 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response1)
+    #
+    #     print("----------------------------------------------------------------------")
+    #     chat_history.extend([{"question": conv_question1, "response": response1}])
+    #     print(Fore.BLUE + f"Question: {conv_question2}" + Style.RESET_ALL)
+    #     print()
+    #     response2 = chatbot.ask_question(conv_question2, chat_history, verbose=verbose)
+    #     print(Fore.GREEN + "Answer:\n" + response2 + Style.RESET_ALL)
+    #     self.assertIsNotNone(response2)

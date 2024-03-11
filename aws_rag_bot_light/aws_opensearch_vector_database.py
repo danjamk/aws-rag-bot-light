@@ -5,10 +5,10 @@ from langchain_community.document_loaders import (
     PyPDFLoader
 )
 from dotenv import find_dotenv, load_dotenv
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_openai import OpenAIEmbeddings
+# from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.embeddings.bedrock import BedrockEmbeddings
-from langchain_community.embeddings import CohereEmbeddings
+# from langchain_community.embeddings import CohereEmbeddings
 from langchain_community.vectorstores import OpenSearchVectorSearch
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import boto3
@@ -24,11 +24,11 @@ DEFAULT_CHUNK_SIZE = 256
 
 # Defined structures for the supported embedding types.  Can be extended
 class EmbeddingTypes:
-    OPENAI_GPT_DEFAULT = {"name": "openai-gpt-default", "provider": "openai", "model": "default"}
-    HUGGING_FACE_DEFAULT = {"name": "hugging-face-default", "provider": "hugging-face", "model": "default"}
+    # OPENAI_GPT_DEFAULT = {"name": "openai-gpt-default", "provider": "openai", "model": "default"}
+    # HUGGING_FACE_DEFAULT = {"name": "hugging-face-default", "provider": "hugging-face", "model": "default"}
     BEDROCK_DEFAULT = {"name": "bedrock-default", "provider": "bedrock", "model": "amazon.titan-embed-text-v1",
                        "region": "us-east-1"}
-    COHERE_DEFAULT = {"name": "cohere-default", "provider": "cohere", "model": "embed-english-light-v3.0"}
+    # COHERE_DEFAULT = {"name": "cohere-default", "provider": "cohere", "model": "embed-english-light-v3.0"}
 
 
 # ======= Static Utility Functions =======
@@ -74,24 +74,24 @@ def get_embeddings_from_model(embedding_model=None):
     if embedding_model is None:
         embedding_model = EmbeddingTypes.BEDROCK_DEFAULT
 
-    if embedding_model['provider'] == 'hugging-face':
-        if embedding_model['name'] == EmbeddingTypes.HUGGING_FACE_DEFAULT['name']:
-            embeddings = HuggingFaceEmbeddings()
-        else:
-            embeddings = HuggingFaceEmbeddings(model_name=embedding_model['model'])
+    # if embedding_model['provider'] == 'hugging-face':
+    #     if embedding_model['name'] == EmbeddingTypes.HUGGING_FACE_DEFAULT['name']:
+    #         embeddings = HuggingFaceEmbeddings()
+    #     else:
+    #         embeddings = HuggingFaceEmbeddings(model_name=embedding_model['model'])
 
     elif embedding_model['provider'] == 'bedrock':
         embeddings = BedrockEmbeddings(model_id=embedding_model['model'], region_name=embedding_model['region'])
 
-    elif embedding_model['provider'] == 'cohere':
-        embeddings = CohereEmbeddings(model=embedding_model['model'])
-
-    elif embedding_model['provider'] == 'openai':
-        load_dotenv(find_dotenv())
-        if embedding_model['name'] == EmbeddingTypes.OPENAI_GPT_DEFAULT['name']:
-            embeddings = OpenAIEmbeddings()
-        else:
-            embeddings = OpenAIEmbeddings(model=embedding_model['model'])
+    # elif embedding_model['provider'] == 'cohere':
+    #     embeddings = CohereEmbeddings(model=embedding_model['model'])
+    #
+    # elif embedding_model['provider'] == 'openai':
+    #     load_dotenv(find_dotenv())
+    #     if embedding_model['name'] == EmbeddingTypes.OPENAI_GPT_DEFAULT['name']:
+    #         embeddings = OpenAIEmbeddings()
+    #     else:
+    #         embeddings = OpenAIEmbeddings(model=embedding_model['model'])
 
     else:
         raise f"Error getting embedding. Cannot handle embeddings with provider {embedding_model['provider']}"
